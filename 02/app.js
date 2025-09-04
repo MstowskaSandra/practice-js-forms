@@ -1,6 +1,7 @@
 const labelEmail = document.querySelector('label[for="formLogin"]');
 const labelPassFirst = document.querySelector('label[for="formPass1"]');
 const labelPassSecond = document.querySelector('label[for="formPass2"]');
+const labelCheckbox= document.querySelector('label[for="formAccept"]');
 const inputEmail = document.querySelector('input[name="login"]');
 
 inputEmail.addEventListener('input', checkEmail);
@@ -32,3 +33,22 @@ function checkPass() {
         labelPassSecond.style.border ='1px solid green';
     }
 }
+
+const inputCheckbox = document.querySelector('input[name="accept"]');
+const form = document.querySelector('form');
+form.addEventListener('submit', handleSubmit);
+
+function handleSubmit(e) {
+    e.preventDefault();
+
+    if ( labelEmail.style.border === '1px solid green' && 
+         labelPassFirst.style.border === '1px solid green' && 
+         labelPassSecond.style.border === '1px solid green' &&
+         inputCheckbox.checked ) {
+         console.log("done")
+    } else if ( !inputCheckbox.checked) {
+        alert("Zatwierdz regulamin!");
+        labelCheckbox.style.border = "1px solid red";
+    }
+}
+
