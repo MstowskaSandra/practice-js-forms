@@ -38,3 +38,23 @@ function getChannelColor(colorInHex, channelName) {
 }
 
 
+const box = document.querySelector('.box');
+const colorInput = document.querySelector('input[name="color"]');
+const opacityInput = document.querySelector('input[name="opacity"]');
+
+let currentColor = colorInput.value;
+let currentOpacity = opacityInput.value / 100;
+
+function handleColorChange(e) {
+    currentColor = e.target.value;
+    setBoxShadow(box, currentColor, currentOpacity);
+}
+
+function handleOpacityChange(e) {
+    currentOpacity = e.target.value / 100;
+    setBoxShadow(box, currentColor, currentOpacity);
+}
+
+colorInput.addEventListener('input', handleColorChange);
+opacityInput.addEventListener('input', handleOpacityChange);
+
